@@ -1,0 +1,136 @@
+@import 'grids.scss';
+@import 'variables.scss';
+
+//font
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;1,100&display=swap');
+
+* {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+body {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), #220660;
+}
+
+@each $name, $color in $colors {
+  .bg {
+    &-#{''+$name} {
+      background-color: $color;
+      //  create variations (if not black or white)
+      @if $color != white and $color != black {
+        &.extra-light {
+          background-color: mix($color, white, 25%);
+        }
+        &.light {
+          background-color: mix($color, white, 50%);
+        }
+        &.semi-light {
+          background-color: mix($color, white, 75%);
+        }
+        &.extra-dark {
+          background-color: mix($color, black, 25%);
+        }
+        &.dark {
+          background-color: mix($color, black, 50%);
+        }
+        &.semi-dark {
+          background-color: mix($color, black, 75%);
+        }
+      }
+    }
+  }
+  //text colors
+  .text {
+    &-#{""+$name} {
+      color: $color;
+      //  create variations (if not black or white)
+      @if $color != white and $color != black {
+        &.extra-light-text {
+          color: mix($color, white, 25%);
+        }
+        &.light-text {
+          color: mix($color, white, 50%);
+        }
+        &.semi-light-text {
+          color: mix($color, white, 75%);
+        }
+        &.extra-dark-text {
+          color: mix($color, black, 25%);
+        }
+        &.dark-text {
+          color: mix($color, black, 50%);
+        }
+        &.semi-dark-text {
+          color: mix($color, black, 75%);
+        }
+      }
+    }
+  }
+}
+
+
+//backgrounds
+
+//@media (min-width: 768px) {
+  @each $name, $size in $fSizes {
+    .fSize {
+      &-#{''+$name} {
+        font-size: $size;
+      }
+    }
+  }
+//}
+
+@media (max-width: 768px) {
+  @each $name, $size in $fSizes {
+    .fSize-sm {
+      &-#{''+$name} {
+        font-size: $size;
+      }
+    }
+  }
+}
+
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
+/* hide scrollbar but allow scrolling */
+.hide-scroll {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+.btn {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body, #__nuxt {
+  overflow-x: hidden;
+}
+
+
+@media (min-width: 1400px) {
+  .container{
+    max-width: 1140px;
+  }
+}
